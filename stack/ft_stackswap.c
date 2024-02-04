@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intruction02.c                                     :+:      :+:    :+:   */
+/*   ft_stackswap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 20:00:54 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/31 20:08:18 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/04 10:34:46 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/04 10:39:25 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	ra(t_stack *s_a)
+void	ft_stackswap(t_stack *s)
 {
-	ft_stackrotate(s_a);
-	write(1, "ra\n", 3);
-}
+	int	tmp;
 
-void	rb(t_stack *s_b)
-{
-	ft_stackrotate(s_b);
-	write(1, "rb\n", 3);
+	if (s->next)
+	{
+		tmp = s->data;
+		s->data = s->next->data;
+		s->next->data = tmp;
+	}
 }

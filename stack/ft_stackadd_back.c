@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_stackadd_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 18:32:06 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/04 16:37:56 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/04 10:41:34 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/04 10:43:21 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../push_swap.h"
 
-# include "libft/libft.h"
-
-typedef struct s_stack
+void	ft_stackadd_back(t_stack **s, t_stack *new)
 {
-	long int		data;
-	struct s_stack	*next;
-}				t_stack;
+	t_stack	*tmp;
 
-
-t_stack	*ft_stacknew(int data);
-void	ft_stackswap(t_stack *s);
-void	ft_stackpush(t_stack **s1, t_stack **s2);
-void	ft_stackrotate(t_stack *s);
-void	ft_stackrev_rotate(t_stack **s);
-void	ft_stackadd_back(t_stack **s, t_stack *new);
-
-#endif
+	if (*s == NULL)
+	{
+		*s = new;
+		return ;
+	}
+	tmp = *s;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
+}

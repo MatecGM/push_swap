@@ -4,9 +4,13 @@ CC = cc
 
 NAME = push_swap
 
-SRCS = intruction01.c \
-		intruction02.c \
-		stack.c \
+SRCS = instruction.c \
+		stack/ft_stacknew.c \
+		stack/ft_stackpush.c \
+		stack/ft_stackrev_rotate.c \
+		stack/ft_stackrotate.c \
+		stack/ft_stackswap.c \
+		stack/ft_stackadd_back.c \
 
 OBJS = $(SRCS:.c=.o)
 

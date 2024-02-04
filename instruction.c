@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction01.c                                    :+:      :+:    :+:   */
+/*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 17:49:01 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/31 20:29:50 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:23:52 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,51 @@ void	swap(t_stack *s_a, t_stack *s_b)
 	}
 }
 
-void	push(t_stack *s_a, t_stack *s_b)
+void	push(t_stack *s_1, t_stack *s_2, char letter)
 {
-	ft_stackpush(&s_b, &s_a);
-	write(1, "pa\n", 3);
+	ft_stackpush(&s_1, &s_2);
+	if (letter == 'a')
+		write(1, "pa\n", 3);
+	else if (letter == 'b')
+		write(1, "pb\n", 3);
 }
 
-void	pb(t_stack *s_a, t_stack *s_b)
+void	rotate(t_stack *s_a, t_stack *s_b)
 {
-	ft_stackpush(&s_a, &s_b);
-	write(1, "pb\n", 3);
+	if (s_a && s_b)
+	{
+		ft_stackrotate(s_a);
+		ft_stackrotate(s_b);
+		write(1, "rr\n", 3);
+	}
+	else if (s_a)
+	{
+		ft_stackrotate(s_a);
+		write(1, "ra\n", 3);
+	}
+	else if (s_b)
+	{
+		ft_stackrotate(s_b);
+		write(1, "rb\n", 3);
+	}
+}
+
+void	revrotate(t_stack *s_a, t_stack *s_b)
+{
+	if (s_a && s_b)
+	{
+		ft_stackrev_rotate(&s_a);
+		ft_stackrev_rotate(&s_b);
+		write(1, "rrr\n", 4);
+	}
+	else if (s_a)
+	{
+		ft_stackrev_rotate(&s_a);
+		write(1, "rra\n", 4);
+	}
+	else if (s_b)
+	{
+		ft_stackrev_rotate(&s_b);
+		write(1, "rrb\n", 4);
+	}
 }
