@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacknew.c                                      :+:      :+:    :+:   */
+/*   ft_presort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 10:34:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/06 19:04:12 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/06 18:46:30 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/06 20:15:15 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-t_stack	*ft_stacknew(int data, int position)
+void	ft_insertion(t_stack *s, int i)
 {
-	t_stack	*s;
+	t_stack	*min;
+	int		nb;
 
-	s = calloc(1, sizeof(t_stack));
-	if (!s)
-		return (NULL);
-	s->data = data;
-	s->position = position;
-	s->next = NULL;
-	return (s);
+	nb = 2147483647;
+	while (s)
+	{
+		if (nb >= s->data && s->position == 0)
+		{
+			min = s;
+			nb = s->data;
+		}
+		s = s->next;
+	}
+	min->position = i;
+}
+
+void	ft_presort(t_vars *v)
+{
+	int		i;
+
+	i = 1;
+	while (i <= v->len)
+	{
+		ft_insertion(v->s_a, i);
+		i ++;
+	}
 }
