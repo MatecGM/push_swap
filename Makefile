@@ -15,6 +15,7 @@ SRCS = main.c \
 		stack/ft_stackadd_back.c \
 		stack/ft_stacklen.c \
 		ft_presort.c \
+		stock.c \
 
 OBJS = $(SRCS:.c=.o)
 
