@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 10:36:39 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/04 10:39:33 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/13 17:21:32 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@
 void	ft_stackrev_rotate(t_stack **s)
 {
 	t_stack	*ptr;
+	t_stack	*beflast;
+	t_stack	*last;
 
+	if (!(*s) || !(*s)->next)
+		return ;
 	ptr = *s;
-	while (ptr->next)
+	while (ptr->next->next)
 		ptr = ptr->next;
-	ptr->next = *s;
-	*s = (*s)->next;
-	ptr->next->next = NULL;
+	beflast = ptr;
+	last = ptr->next;
+	beflast->next = NULL;
+	last->next = *s;
+	*s = last;
 }

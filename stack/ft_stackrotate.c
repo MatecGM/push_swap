@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 10:36:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/04 10:39:30 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/13 16:35:46 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@
 void	ft_stackrotate(t_stack *s)
 {
 	t_stack	*ptr;
-	int		tmp;
+	int		tmp_d;
+	int		tmp_p;
 
 	ptr = s;
-	tmp = s->data;
+	tmp_d = s->data;
+	tmp_p = s->position;
 	while (ptr->next)
 	{
 		ptr->data = ptr->next->data;
+		ptr->position = ptr->next->position;
 		ptr = ptr->next;
 	}
-	ptr->data = tmp;
+	ptr->data = tmp_d;
+	ptr->position = tmp_p;
 }

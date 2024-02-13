@@ -16,6 +16,7 @@ SRCS = main.c \
 		stack/ft_stacklen.c \
 		ft_presort.c \
 		stock.c \
+		selection.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -30,7 +31,7 @@ $(LIBFT):
 	make -C libft -j
 
 .c.o:
-	$(CC) $(FLAGS) -g $(FLAGS) -I/usr/include -I./libft -O3 -c $< -o $@
+	$(CC) $(FLAGS) -g $(FLAGS) -I/usr/include -I./libft -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

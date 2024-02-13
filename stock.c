@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:03:29 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/10 16:52:49 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/13 16:08:28 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ int	ft_div_finder(t_stack *s_a, int pos)
 			return (s_a->data);
 		s_a = s_a->next;
 	}
+	return (s_a->data);
 }
 
 void	ft_init_divider(t_vars *v)
 {
 	int	i;
-	
+
 	v->div = ft_calloc(CHUNK * 2 + 1, sizeof(int));
 
 	i = 1;
@@ -46,19 +47,23 @@ void	ft_stock_on_b(t_vars *v)
 	int	nb;
 
 	i = 0;
-	while (i < CHUNK)
+	while (i <= CHUNK + 2)
 	{
 		len = ft_stacklen(v->s_a);
 		while (len > 0)
 		{
-			ft_printf("TEST\n");
 			nb = v->s_a->data;
-			if ((nb >= v->div[i] && nb <= v->div[i + 1])
-				|| (nb >= v->div[len - i] && nb >= v->div[len - i + 1]))
-				push(v->s_a, v->s_b, 'b');
-			rotate(v->s_a, NULL);
+			if ((nb >= v->div[i] && nb <= v->div[i + 1]))
+			{
+				push(&v->s_a, &v->s_b, 'b');
+				rotate(NULL, v->s_b);
+			}
+			else if  (nb >= v->div[i + 1] && nb <= v->div[i + 2])
+				push(&v->s_a, &v->s_b, 'b');
+			else
+				rotate(v->s_a, NULL);
 			len --;
 		}
-		i ++;
+		i += 2;
 	}
 }
