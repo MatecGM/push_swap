@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:42:49 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/13 17:27:57 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/13 17:36:39 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int	main(int argc, char **argv)
 	vars->s_a = s;
 	ft_init_divider(vars);
 	ft_stock_on_b(vars);
-	//ft_selection(vars);
-	
+	ft_selection(vars);
 }

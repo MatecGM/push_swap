@@ -6,8 +6,16 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:31:29 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/13 17:31:39 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/13 17:38:28 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_
+#include "push_swap.h"
+
+void	ft_insertion(t_vars *v)
+{
+	while (v->len >= 1)
+	{
+		
+	}
+}

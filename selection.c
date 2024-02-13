@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:06:29 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/13 17:27:45 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/13 17:35:38 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_stack_index(t_stack	*s, int pos)
 
 void	ft_selection(t_vars *v)
 {
-	while (v->len > 1)
+	while (v->len >= 1)
 	{
 		if (ft_stack_index(v->s_b, v->len) <= v->len / 2)
 		{
@@ -44,5 +44,4 @@ void	ft_selection(t_vars *v)
 		push(&v->s_b, &v->s_a, 'a');
 		v->len --;
 	}
-	push(&v->s_b, &v->s_a, 'a');
 }
