@@ -16,7 +16,8 @@ SRCS = main.c \
 		stack/ft_stacklen.c \
 		ft_presort.c \
 		stock.c \
-		selection.c \
+		insertion.c \
+		count_cost.c \
 
 OBJS = $(SRCS:.c=.o)
 
