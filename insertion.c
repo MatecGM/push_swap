@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:31:29 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/16 18:37:23 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/18 20:01:02 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static    int midvalue(t_stack *s, int pos)
     }
     if (!tmp->next && !(tmp->position < pos && s->position > pos))
     {
-        ft_printf("min et max");
         i = maxvalue(s, pos);
     }
     if (i > len / (double)2)
@@ -67,7 +66,6 @@ int    ft_stack_index(t_stack *s, int pos)
     tmp = s;
     i = midvalue(s, pos);
     s = tmp;
-    ft_printf("%d\n", i);
     //i = 0;
     return (i);
 }
