@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:32:06 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/18 21:17:17 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/19 17:27:54 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	ft_selection(t_vars *v);
 int		ft_stack_index(t_stack *s, int pos);
 void		count_cost(t_vars *v);
 void	ft_last_rotate(t_vars *v);
+void	ft_lilpresort(t_vars *v);
 
 #endif

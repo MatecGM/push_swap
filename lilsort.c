@@ -1,43 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_presort.c                                       :+:      :+:    :+:   */
+/*   lilsort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 18:46:30 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/19 17:28:23 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/19 17:13:22 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/19 17:30:49 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_indexer(t_stack *s, int i)
+void	ft_treesort(t_vars	*v)
 {
-	t_stack	*min;
-	int		nb;
+	t_stack	*s;
 
-	nb = 2147483647;
-	while (s)
+	s = v->s_a;
+	if (s->position == 1)
 	{
-		if (nb >= s->data && s->position == 0)
-		{
-			min = s;
-			nb = s->data;
-		}
-		s = s->next;
+		rotate(v->s_a);
+		swap(v->s_a, NULL);
 	}
-	min->position = i;
 }
 
-void	ft_presort(t_vars *v)
+void	ft_lilpresort(t_vars *v)
 {
-	int		i;
+	t_stack	*tmp;
+	t_stack	*ptr;
 
-	i = 1;
-	while (i <= v->len)
+	tmp = v->s_a;
+	ptr = v->s_a;
+	while (ptr)
 	{
-		ft_indexer(v->s_a, i);
-		i ++;
+		ptr->position += 1;
+		while (tmp)
+		{
+			if (ptr->data > tmp->data)
+				ptr->position ++;
+			tmp = tmp->next;
+		}
+		tmp = v->s_a;
+		ptr = ptr->next;
 	}
+	
 }
