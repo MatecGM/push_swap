@@ -5,6 +5,8 @@
 		"random": "c",
 		"limits": "c",
 		"semaphore": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"regex": "c",
+		"libft.h": "c"
 	}
 }

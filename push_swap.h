@@ -6,14 +6,12 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:32:06 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/19 17:27:54 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/21 17:28:56 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# define CHUNK 4
 
 # include "libft/libft.h"
 
@@ -30,6 +28,9 @@ typedef struct s_vars
 	t_stack	*s_b;
 	int		len;
 	int		*div;
+	int		chunk;
+	int		rot_a;
+	int		rot_b;
 }				t_vars;
 
 
@@ -53,5 +54,9 @@ int		ft_stack_index(t_stack *s, int pos);
 void		count_cost(t_vars *v);
 void	ft_last_rotate(t_vars *v);
 void	ft_lilpresort(t_vars *v);
+void	ft_treesort(t_vars	*v);
+void	ft_lilsort(t_vars *v);
+void	ft_fivesort(t_vars *v);
+void	ft_insertion(t_vars *v);
 
 #endif

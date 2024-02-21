@@ -18,6 +18,7 @@ SRCS = main.c \
 		stock.c \
 		insertion.c \
 		count_cost.c \
+		lilsort.c \
 
 OBJS = $(SRCS:.c=.o)
 

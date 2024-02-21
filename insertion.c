@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:31:29 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/19 03:43:00 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/21 17:28:50 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,29 @@ int  ft_stack_index(t_stack *s, int pos)
     if (i > len / (double)2)
         i -= len;
     return (i);
+}
+
+void	ft_insertion(t_vars *v)
+{
+	while (v->rot_b < 0)
+	{
+		revrotate(NULL, &v->s_b);
+		v->rot_b ++;
+	}
+	while (v->rot_b > 0)
+	{
+		rotate(NULL, v->s_b);
+		v->rot_b --;
+	}
+	while (v->rot_a < 0)
+	{
+		revrotate(&v->s_a, NULL);
+		v->rot_a ++;
+	}
+	while (v->rot_a > 0)
+	{
+		rotate(v->s_a, NULL);
+		v->rot_a --;
+	}
+	push(&v->s_b, &v->s_a, 'a');
 }

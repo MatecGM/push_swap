@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:14:18 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/18 21:24:16 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/21 17:35:25 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	*rotate_cost(t_vars *v, int *best, int len)
 		{
 			best[0] = ft_abs(actual) + ft_abs(j);
 			best[1] = j;
+			v->rot_a = actual; 
 		}
 		tmp = tmp->next;
 		i ++;
@@ -58,30 +59,20 @@ int	*rotate_cost(t_vars *v, int *best, int len)
 	return (best);
 }
 
-void	ft_insertion(t_vars *v, int i)
+void	doublerotation(t_vars *v)
 {
-	while (i < 0)
+	while (v->rot_a < 0 && v->rot_b < 0)
 	{
-		revrotate(NULL, &v->s_b);
-		i ++;
+		revrotate(&v->s_a, &v->s_b);
+		v->rot_a ++;
+		v->rot_b ++;
 	}
-	while (i > 0)
+	while (v->rot_a > 0 && v->rot_b > 0)
 	{
-		rotate(NULL, v->s_b);
-		i --;
+		rotate(v->s_a, v->s_b);
+		v->rot_a --;
+		v->rot_b --;
 	}
-	i = ft_stack_index(v->s_a, v->s_b->position);
-	while (i < 0)
-	{
-		revrotate(&v->s_a, NULL);
-		i ++;
-	}
-	while (i > 0)
-	{
-		rotate(v->s_a, NULL);
-		i --;
-	}
-	push(&v->s_b, &v->s_a, 'a');
 }
 
 void	count_cost(t_vars *v)
@@ -95,7 +86,9 @@ void	count_cost(t_vars *v)
 		best[0] = 2147483647;
 		best[1] = 0;
 		rotate_cost(v, best, len);
-		ft_insertion(v, best[1]);
+		v->rot_b = best[1];
+		doublerotation(v);
+		ft_insertion(v);
 		len --;
 	}
 }

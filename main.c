@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:42:49 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/18 21:17:31 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:42:19 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,19 @@ int	main(int argc, char **argv)
 	int		i;
 
 	vars->s_a = ft_parsing(argc, argv);
-	vars->len = ft_stacklen(vars->s_a);
 	vars->s_b = NULL;
+	vars->len = ft_stacklen(vars->s_a);
+	vars->chunk = 2;
 	s = vars->s_a;
 	ft_presort(vars);
-	if (ft_checker(vars))
+	if (ft_checker(vars) && vars->len <= 3)
+		ft_treesort(vars);
+	else if (ft_checker(vars) && vars->len == 5)
+		ft_fivesort(vars);
+	else if (ft_checker(vars))
 	{
+		if (vars->len <= 100)
+			vars->chunk = 2;
 		vars->s_a = s;
 		ft_init_divider(vars);
 		ft_stock_on_b(vars);

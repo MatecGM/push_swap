@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:03:29 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/13 16:08:28 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:04:41 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ void	ft_init_divider(t_vars *v)
 {
 	int	i;
 
-	v->div = ft_calloc(CHUNK * 2 + 1, sizeof(int));
+	v->div = ft_calloc(v->chunk * 2 + 1, sizeof(int));
 
 	i = 1;
 	v->div[0] = ft_div_finder(v->s_a, 1);
-	while (i < CHUNK * 2)
+	while (i < v->chunk * 2)
 	{
-		v->div[i] = ft_div_finder(v->s_a, v->len / (CHUNK * 2) * i);
+		v->div[i] = ft_div_finder(v->s_a, v->len / (v->chunk * 2) * i);
 		i ++;
 	}
-	v->div[CHUNK * 2] = ft_div_finder(v->s_a, v->len);
+	v->div[v->chunk * 2] = ft_div_finder(v->s_a, v->len);
 }
 
 void	ft_stock_on_b(t_vars *v)
@@ -47,7 +47,7 @@ void	ft_stock_on_b(t_vars *v)
 	int	nb;
 
 	i = 0;
-	while (i <= CHUNK + 2)
+	while (i <= v->chunk + 2)
 	{
 		len = ft_stacklen(v->s_a);
 		while (len > 0)
