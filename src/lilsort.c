@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:13:22 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/21 17:50:12 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/24 11:29:50 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,28 @@ void	ft_treesort(t_vars	*v)
 {
 	if (!v->s_a || !v->s_a->next)
 		return ;
-	else if (!v->s_a->next->next && v->s_a->position > v->s_a->next->position)
+	else if (!v->s_a->next->next
+		&& v->s_a->position > v->s_a->next->position)
 		swap(v->s_a, NULL);
-	else if (v->s_a->position > v->s_a->next->position && v->s_a->position > v->s_a->next->next->position)
+	else if (v->s_a->position > v->s_a->next->position
+		&& v->s_a->position > v->s_a->next->next->position)
 	{
 		rotate(v->s_a, NULL);
-		if (v->s_a->position > v->s_a->next->position && v->s_a->position < v->s_a->next->next->position)
+		if (v->s_a->position > v->s_a->next->position
+			&& v->s_a->position < v->s_a->next->next->position)
 			swap(v->s_a, NULL);
 	}
-	else if (v->s_a->position < v->s_a->next->position && v->s_a->next->position > v->s_a->next->next->position)
+	else if (v->s_a->position < v->s_a->next->position
+		&& v->s_a->next->position > v->s_a->next->next->position)
 	{
 		revrotate(&v->s_a, NULL);
-		if (v->s_a->position > v->s_a->next->position && v->s_a->position < v->s_a->next->next->position)
+		if (v->s_a->position > v->s_a->next->position
+			&& v->s_a->position < v->s_a->next->next->position)
 			swap(v->s_a, NULL);
 	}
-	else if (v->s_a->position > v->s_a->next->position && v->s_a->position < v->s_a->next->next->position)
-			swap(v->s_a, NULL);
+	else if (v->s_a->position > v->s_a->next->position
+		&& v->s_a->position < v->s_a->next->next->position)
+		swap(v->s_a, NULL);
 }
 
 void	ft_fivesort(t_vars *v)

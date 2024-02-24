@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackswap.c                                     :+:      :+:    :+:   */
+/*   ft_stacknew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 10:34:46 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/04 10:39:25 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/04 10:34:03 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/24 12:25:30 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void	ft_stackswap(t_stack *s)
+t_stack	*ft_stacknew(int data, int position)
 {
-	int	tmp;
+	t_stack	*s;
 
-	if (s->next)
-	{
-		tmp = s->data;
-		s->data = s->next->data;
-		s->next->data = tmp;
-	}
+	s = calloc(1, sizeof(t_stack));
+	if (!s)
+		return (NULL);
+	s->data = data;
+	s->position = position;
+	s->next = NULL;
+	return (s);
 }

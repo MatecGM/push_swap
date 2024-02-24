@@ -6,19 +6,19 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:32:06 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/21 17:28:56 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/24 14:18:33 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct s_stack
 {
-	int		data;
-	int		position;
+	int				data;
+	int				position;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -32,7 +32,6 @@ typedef struct s_vars
 	int		rot_a;
 	int		rot_b;
 }				t_vars;
-
 
 t_stack	*ft_stacknew(int data, int position);
 void	ft_stackswap(t_stack *s);
@@ -51,12 +50,15 @@ void	revrotate(t_stack **s_a, t_stack **s_b);
 void	ft_stock_on_b(t_vars *v);
 void	ft_selection(t_vars *v);
 int		ft_stack_index(t_stack *s, int pos);
-void		count_cost(t_vars *v);
+void	count_cost(t_vars *v);
 void	ft_last_rotate(t_vars *v);
 void	ft_lilpresort(t_vars *v);
 void	ft_treesort(t_vars	*v);
 void	ft_lilsort(t_vars *v);
 void	ft_fivesort(t_vars *v);
 void	ft_insertion(t_vars *v);
+int		ft_strisint(char *str);
+void	ft_stackclear(t_stack *s);
+int		ft_checkdouble(t_stack *s);
 
 #endif

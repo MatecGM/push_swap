@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:05:53 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/07 21:01:36 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/24 15:07:41 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ t_stack	*ft_stack_filler(t_stack *s_a, char **splitted)
 	int		i;
 
 	i = 0;
-	if (!splitted)
-		return (NULL);
 	while (splitted[i])
 	{
+		if (!ft_strisint(splitted[i]))
+			return (NULL);
 		new = ft_stacknew(ft_atoi(splitted[i]), 0);
 		if (!new)
 			return (NULL);
@@ -49,6 +49,8 @@ void	ft_free_split(char **splitted_char)
 	int	i;
 
 	i = 0;
+	if (!splitted_char)
+		return ;
 	while (splitted_char[i])
 	{
 		free(splitted_char[i]);
@@ -71,10 +73,12 @@ t_stack	*ft_parsing(int argc, char **argv)
 		splitted = ft_split(argv[i], ' ');
 		s_a = ft_stack_filler(s_a, splitted);
 		if (!s_a)
+		{
+			ft_free_split(splitted);
 			return (NULL);
+		}
 		i ++;
 		ft_free_split(splitted);
-
 	}
 	return (s_a);
 }

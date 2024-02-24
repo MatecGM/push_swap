@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacknew.c                                      :+:      :+:    :+:   */
+/*   ft_stackrotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 10:34:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/06 19:04:12 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/04 10:36:03 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/24 12:25:30 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-t_stack	*ft_stacknew(int data, int position)
+//1 2 3 4 5 6 -> 2 3 4 5 6 1
+void	ft_stackrotate(t_stack *s)
 {
-	t_stack	*s;
+	t_stack	*ptr;
+	int		tmp_d;
+	int		tmp_p;
 
-	s = calloc(1, sizeof(t_stack));
-	if (!s)
-		return (NULL);
-	s->data = data;
-	s->position = position;
-	s->next = NULL;
-	return (s);
+	ptr = s;
+	tmp_d = s->data;
+	tmp_p = s->position;
+	while (ptr->next)
+	{
+		ptr->data = ptr->next->data;
+		ptr->position = ptr->next->position;
+		ptr = ptr->next;
+	}
+	ptr->data = tmp_d;
+	ptr->position = tmp_p;
 }

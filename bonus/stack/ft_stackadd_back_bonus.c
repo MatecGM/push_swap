@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackrotate.c                                   :+:      :+:    :+:   */
+/*   ft_stackadd_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 10:36:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/13 16:35:46 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/04 10:41:34 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/24 12:25:30 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-//1 2 3 4 5 6 -> 2 3 4 5 6 1
-void	ft_stackrotate(t_stack *s)
+void	ft_stackadd_back(t_stack **s, t_stack *new)
 {
-	t_stack	*ptr;
-	int		tmp_d;
-	int		tmp_p;
+	t_stack	*tmp;
 
-	ptr = s;
-	tmp_d = s->data;
-	tmp_p = s->position;
-	while (ptr->next)
+	if (*s == NULL)
 	{
-		ptr->data = ptr->next->data;
-		ptr->position = ptr->next->position;
-		ptr = ptr->next;
+		*s = new;
+		return ;
 	}
-	ptr->data = tmp_d;
-	ptr->position = tmp_p;
+	tmp = *s;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 }

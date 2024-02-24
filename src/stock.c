@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:03:29 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/21 19:04:41 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/24 12:01:26 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_div_finder(t_stack *s_a, int pos)
 {
-	int	div;
 	while (s_a)
 	{
 		if (s_a->position == pos)
@@ -29,7 +28,6 @@ void	ft_init_divider(t_vars *v)
 	int	i;
 
 	v->div = ft_calloc(v->chunk * 2 + 1, sizeof(int));
-
 	i = 1;
 	v->div[0] = ft_div_finder(v->s_a, 1);
 	while (i < v->chunk * 2)
@@ -58,7 +56,7 @@ void	ft_stock_on_b(t_vars *v)
 				push(&v->s_a, &v->s_b, 'b');
 				rotate(NULL, v->s_b);
 			}
-			else if  (nb >= v->div[i + 1] && nb <= v->div[i + 2])
+			else if (nb >= v->div[i + 1] && nb <= v->div[i + 2])
 				push(&v->s_a, &v->s_b, 'b');
 			else
 				rotate(v->s_a, NULL);

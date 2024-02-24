@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacklen.c                                      :+:      :+:    :+:   */
+/*   ft_stackadd_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 18:53:04 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/06 18:54:57 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/04 10:41:34 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/24 12:25:30 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-int	ft_stacklen(t_stack *s)
+void	ft_stackadd_back(t_stack **s, t_stack *new)
 {
-	int	i;
+	t_stack	*tmp;
 
-	i = 0;
-	while (s)
+	if (*s == NULL)
 	{
-		s = s->next;
-		i ++;
+		*s = new;
+		return ;
 	}
-	return (i);
+	tmp = *s;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 }

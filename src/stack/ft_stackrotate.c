@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_presort.c                                       :+:      :+:    :+:   */
+/*   ft_stackrotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 18:46:30 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/21 15:51:54 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/04 10:36:03 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/24 12:25:30 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_indexer(t_stack *s, int i)
+//1 2 3 4 5 6 -> 2 3 4 5 6 1
+void	ft_stackrotate(t_stack *s)
 {
-	t_stack	*min;
-	int		nb;
+	t_stack	*ptr;
+	int		tmp_d;
+	int		tmp_p;
 
-	nb = 2147483647;
-	while (s)
+	ptr = s;
+	tmp_d = s->data;
+	tmp_p = s->position;
+	while (ptr->next)
 	{
-		if (nb >= s->data && s->position == 0)
-		{
-			min = s;
-			nb = s->data;
-		}
-		s = s->next;
+		ptr->data = ptr->next->data;
+		ptr->position = ptr->next->position;
+		ptr = ptr->next;
 	}
-	min->position = i;
-}
-
-void	ft_presort(t_vars *v)
-{
-	int		i;
-
-	i = 1;
-	while (i <= v->len)
-	{
-		ft_indexer(v->s_a, i);
-		i ++;
-	}
+	ptr->data = tmp_d;
+	ptr->position = tmp_p;
 }

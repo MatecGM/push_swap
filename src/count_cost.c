@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:14:18 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/21 17:35:25 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/24 11:23:08 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_abs(int n)
 		n *= -1;
 	return (n);
 }
+
 void	ft_last_rotate(t_vars *v)
 {
 	if (v->s_a->position > v->len / 2)
@@ -51,7 +52,7 @@ int	*rotate_cost(t_vars *v, int *best, int len)
 		{
 			best[0] = ft_abs(actual) + ft_abs(j);
 			best[1] = j;
-			v->rot_a = actual; 
+			v->rot_a = actual;
 		}
 		tmp = tmp->next;
 		i ++;

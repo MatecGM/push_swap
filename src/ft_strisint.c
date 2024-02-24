@@ -6,11 +6,13 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:44:22 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/21 20:19:52 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/22 16:37:38 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_atol(const char *nptr)
+#include "push_swap.h"
+
+static long int	ft_atol(const char *nptr)
 {
 	long int	nbr;
 	long int	sign;

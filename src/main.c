@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:42:49 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/21 19:42:19 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/24 15:57:37 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,37 @@ int	ft_checker(t_vars *v)
 	return (0);
 }
 
+void	ft_close(t_vars	*v)
+{
+	ft_stackclear(v->s_a);
+	if (v->s_b)
+		ft_stackclear(v->s_b);
+	if (v->div)
+		free(v->div);
+}
+
+int	varsinit(t_vars *v, int argc, char **argv)
+{
+	v->div = NULL;
+	v->s_b = NULL;
+	v->s_a = ft_parsing(argc, argv);
+	if (!v->s_a)
+		return (1);
+	v->len = ft_stacklen(v->s_a);
+	v->chunk = 4;
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_vars	vars[1];
-	t_stack	*s;
-	int		i;
 
-	vars->s_a = ft_parsing(argc, argv);
-	vars->s_b = NULL;
-	vars->len = ft_stacklen(vars->s_a);
-	vars->chunk = 2;
-	s = vars->s_a;
+	if (varsinit(vars, argc, argv) || !ft_checkdouble(vars->s_a))
+	{
+		ft_putstr_fd("Error", 1);
+		ft_close(vars);
+		return (1);
+	}
 	ft_presort(vars);
 	if (ft_checker(vars) && vars->len <= 3)
 		ft_treesort(vars);
@@ -55,10 +75,10 @@ int	main(int argc, char **argv)
 	{
 		if (vars->len <= 100)
 			vars->chunk = 2;
-		vars->s_a = s;
 		ft_init_divider(vars);
 		ft_stock_on_b(vars);
 		count_cost(vars);
 		ft_last_rotate(vars);
 	}
+	ft_close(vars);
 }
