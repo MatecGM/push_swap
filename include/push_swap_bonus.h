@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:32:06 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/24 17:46:47 by mbico            ###   ########.fr       */
+/*   Updated: 2024/02/29 21:07:30 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,10 @@ void	ft_stackpush(t_stack **s1, t_stack **s2);
 void	ft_stackrev_rotate(t_stack **s);
 void	ft_stackrotate(t_stack *s);
 void	ft_stackswap(t_stack *s);
+t_stack	*ft_parsing_arg(int argc, char **argv);
+int		ft_strisint(char *str);
+int		ft_intruction_read(t_vars *v, char *s);
+int		ft_parse(t_vars *v);
+void	ft_presort(t_vars *v);
 
 #endif

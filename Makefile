@@ -34,7 +34,11 @@ BONUS_SRC = stack/ft_stackadd_back_bonus.c \
 		stack/ft_stackrotate_bonus.c \
 		stack/ft_stackswap_bonus.c \
 		instruction_bonus.c \
-		main_bonus.c
+		main_bonus.c \
+		parsing_arg_bonus.c \
+		ft_strisint_bonus.c \
+		parsing_bonus.c \
+		ft_presort_bonus.c \
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

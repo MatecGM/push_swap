@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacknew_bonus.c                                :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 10:34:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/29 19:15:44 by mbico            ###   ########.fr       */
+/*   Created: 2024/02/29 19:16:53 by mbico             #+#    #+#             */
+/*   Updated: 2024/02/29 20:57:16 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-t_stack	*ft_stacknew(int data, int position)
+int	ft_parse(t_vars *v)
 {
-	t_stack	*s;
+	char	*s;
 
-	s = calloc(1, sizeof(t_stack));
-	if (!s)
-		return (NULL);
-	s->data = data;
-	s->position = position;
-	s->next = NULL;
-	return (s);
+	s = get_next_line(0);
+	while (s)
+	{
+		if (ft_intruction_read(v, s))
+		{
+			free(s);
+			close(0);
+			return (1);
+		}
+		free(s);
+		s = get_next_line(0);
+	}
+	close(0);
+	return (0);
 }
