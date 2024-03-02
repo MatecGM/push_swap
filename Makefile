@@ -86,7 +86,9 @@ clean:
 
 fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(NC)"
+	@echo "$(RED)Removing $(NAME_BONUS)...$(NC)"
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@make -C libft fclean -s
 
 re: fclean all
