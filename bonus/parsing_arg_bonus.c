@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:05:53 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/29 19:23:33 by mbico            ###   ########.fr       */
+/*   Updated: 2024/03/04 10:15:29 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,16 @@ t_stack	*ft_stack_filler(t_stack *s_a, char **splitted)
 	while (splitted[i])
 	{
 		if (!ft_strisint(splitted[i]))
+		{
+			ft_stackclear(s_a);
 			return (NULL);
+		}
 		new = ft_stacknew(ft_atoi(splitted[i]), 0);
 		if (!new)
+		{
+			ft_stackclear(s_a);
 			return (NULL);
+		}
 		ft_stackadd_back(&s_a, new);
 		i ++;
 	}

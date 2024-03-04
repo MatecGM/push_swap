@@ -2,7 +2,7 @@ NAME = push_swap
 NAME_BONUS = checker
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 SRC_DIR = src
 OBJ_DIR = obj
 BONUS_DIR = bonus
