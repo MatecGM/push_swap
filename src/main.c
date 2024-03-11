@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:42:49 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/29 20:01:47 by mbico            ###   ########.fr       */
+/*   Updated: 2024/03/11 15:31:53 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 
 	if (varsinit(vars, argc, argv) || !ft_checkdouble(vars->s_a))
 	{
-		ft_putstr_fd("Error", 1);
+		ft_putstr_fd("Error\n", 2);
 		ft_close(vars);
 		return (1);
 	}

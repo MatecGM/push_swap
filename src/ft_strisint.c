@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:44:22 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/22 16:37:38 by mbico            ###   ########.fr       */
+/*   Updated: 2024/03/11 16:12:05 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,23 @@ static long int	ft_atol(const char *nptr)
 	return (nbr);
 }
 
+int	ft_strnblen(char *str)
+{
+	int	len;
+
+	len = 0;
+	if (*str && (*str == '-' || *str == '+'))
+		str ++;
+	while (*str && *str == '0')
+		str ++;
+	while (*str)
+	{
+		str ++;
+		len ++;
+	}
+	return (len);
+}
+
 int	ft_strisint(char *str)
 {
 	int			len;
@@ -51,7 +68,7 @@ int	ft_strisint(char *str)
 			return (0);
 		tmp ++;
 	}
-	len = ft_strlen(str);
+	len = ft_strnblen(str);
 	nb = ft_atol(str);
 	if (len <= 11 && nb <= 2147483647 && nb >= -2147483648)
 		return (1);

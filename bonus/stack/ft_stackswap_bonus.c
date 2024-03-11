@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 10:34:46 by mbico             #+#    #+#             */
-/*   Updated: 2024/02/29 19:15:58 by mbico            ###   ########.fr       */
+/*   Updated: 2024/03/07 13:19:29 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_stackswap(t_stack *s)
 {
 	int	tmp;
 
-	if (s->next)
+	if (s && s->next)
 	{
 		tmp = s->data;
 		s->data = s->next->data;
